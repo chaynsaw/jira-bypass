@@ -1,14 +1,17 @@
 import React from "react";
 
 const SendCredentials = () => {
+  const Username = "Enter name here";
   return (
-    <form>
-      <label>
-        Name:
-        <input type="text" name="name" />
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
+    <div className="search-params">
+      <form>
+        <label htmlFor="Username">
+          Username
+          <input id="Username" value={Username} placeholder="Username" />
+        </label>
+        <button>Submit</button>
+      </form>
+    </div>
   );
 };
 
