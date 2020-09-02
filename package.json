@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "cleanup": "rm -rf .cache dist",
-    "dev": "npm run cleanup && parcel ./index.html"
+    "dev": "npm run cleanup && parcel src/index.html"
     },
   "keywords": [],
   "author": "",
