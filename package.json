@@ -9,7 +9,7 @@
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "cleanup": "rm -rf .cache dist",
     "dev": "npm run cleanup && parcel src/index.html"
-    },
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -24,6 +24,7 @@
     "prettier": "^2.1.1"
   },
   "dependencies": {
+    "node-fetch": "^2.6.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }
