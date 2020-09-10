@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const SendCredentials = () => {
-  const Username = "byah";
-  const Password = "Enter password here";
+const SendCredentials = (props) => {
   const [jiras, setJiras] = useState(0);
 
   return (
@@ -18,10 +16,13 @@ const SendCredentials = () => {
           <input id="apitoken" name='apitoken' placeholder="API Token" type="password" />
         </label><br />
         
-        <label htmlFor="domainName">
+        <label htmlFor="subDomain">
           Domain Name
-          <input id="domainName" name='domainName' placeholder="API Token" />
+          <input id="subdomain" name='subDomain' placeholder="API Token" />
         </label><br />
+
+        <input type="hidden" name="jiraBypassID" value={props.jiraBypassID}/>
+
 
         <input type="submit" value="Submit" />
       </form>
