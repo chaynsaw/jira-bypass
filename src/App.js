@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import SendCredentials from "./SendCredentials";
+import JiraList from "./JiraList";
 
 function create_UUID(){
   var dt = new Date().getTime();
@@ -19,7 +20,6 @@ const App = () => {
   if (!jiraBypassID) {
     sessionStorage.jiraBypassID = create_UUID()
   } 
-  console.log(jiraBypassID)
   const options = {
     method: 'POST', 
     headers: {
@@ -30,15 +30,16 @@ const App = () => {
     })
   }
 
-  let userExists = false;
+  const [userExists, setuserExists] = useState(false);
+
   useEffect(() => {
     fetch('/checkuser', options, (req, res) => {
       return res
     }).then(data => {
-      if (data.status === 200) {
-        userExists = true
+      if (data.status === 404) {
+        console.log("User doesn't exist")
       } else {
-        userExists = false
+        setuserExists(true)
       }
     })
   })
@@ -46,6 +47,7 @@ const App = () => {
     <div>
       <h1>Jira Bypass</h1>
       <SendCredentials jiraBypassID={jiraBypassID} />
+      <JiraList jiraBypassID={jiraBypassID} userExists={userExists}/>
     </div>
   );
 };

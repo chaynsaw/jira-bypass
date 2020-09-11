@@ -16,10 +16,7 @@ app.use(express.json())
 // });
 
 // start express server on port 5000
-const users = {
-  '2fa2ed9e-568f-40a7-8bb8-a2e626dfb1d5': 'bboy'
-}
-
+const users = {}
 
 app.post("/setcreds", function(req,res) {
   let jiraBypassID = req.body.jiraBypassID
@@ -31,27 +28,23 @@ app.post("/setcreds", function(req,res) {
     authBuffer,
     url
   }
-  console.log(users)
   res.redirect('/')
 })
 
 app.post('/checkuser', function(req,res) {
+  console.log(users)
   if (req.body.jiraBypassID in users) {
-    res.send(users[req.body.jiraBypassID])
+    res.status(200)
   } else {
     res.status(404)
   }
   res.send()
 })
 
-app.get('/checkvariables', (req, res) => {
-  res.send(`${username} ${apitoken} ${domainName}`)
-})
-
-app.get('/jira', function(req, res) {
-  const url = `https://${domainName}.atlassian.net/rest/api/3/search?`
+app.get('/jiralist/:userid', function(req, res) {
+  const url = users[req.params.userid].url
   const searchObj = {
-    jql: 'assignee = currentUser() and status is not closed',
+    jql: 'assignee = currentUser() and status not in (closed, done, resolved)',
     fields: 'summary',
   }
   const params = new URLSearchParams(searchObj)
@@ -60,9 +53,7 @@ app.get('/jira', function(req, res) {
   fetch(searchUrl, {
     method: 'GET',
     headers: {
-      'Authorization': `Basic ${Buffer.from(
-        `${username}:${apitoken}`
-      ).toString('base64')}`,
+      'Authorization': users[req.params.userid].authBuffer,
       'Accept': 'application/json'
     }
   })

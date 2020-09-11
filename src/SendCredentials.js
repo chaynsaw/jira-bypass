@@ -18,7 +18,7 @@ const SendCredentials = (props) => {
         
         <label htmlFor="subDomain">
           Domain Name
-          <input id="subdomain" name='subDomain' placeholder="API Token" />
+          <input id="subDomain" name='subDomain' placeholder="subdomain (EG striiv)   " />
         </label><br />
 
         <input type="hidden" name="jiraBypassID" value={props.jiraBypassID}/>
