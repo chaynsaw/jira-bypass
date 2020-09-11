@@ -37,7 +37,7 @@ const App = () => {
       return res
     }).then(data => {
       if (data.status === 404) {
-        console.log("User doesn't exist")
+        return
       } else {
         setuserExists(true)
       }

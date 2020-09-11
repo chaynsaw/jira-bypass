@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 const JiraList = (props) => {
   let jiraListData
   useEffect(() => {
-    console.log(props.userExists)
     if (props.userExists) {
       fetch(`/jiralist/${props.jiraBypassID}`, (req, res) => {
         return res
@@ -11,15 +10,14 @@ const JiraList = (props) => {
         return data.json()
       }).then(data => {
         jiraListData = data
-        console.log(jiraListData)
       })
     } else {
-      console.log('no data')
+      console.log('no data retrieved for jira list')
     }
   })
 
   return (
-    <div>I AM THE JIRA LIST!!!!</div>
+    <div>JIRA LIST!</div>
   )
 }
 

@@ -32,7 +32,6 @@ app.post("/setcreds", function(req,res) {
 })
 
 app.post('/checkuser', function(req,res) {
-  console.log(users)
   if (req.body.jiraBypassID in users) {
     res.status(200)
   } else {
@@ -48,7 +47,6 @@ app.get('/jiralist/:userid', function(req, res) {
     fields: 'summary',
   }
   const params = new URLSearchParams(searchObj)
-  console.log(params.toString())
   const searchUrl = url + params.toString()
   fetch(searchUrl, {
     method: 'GET',
