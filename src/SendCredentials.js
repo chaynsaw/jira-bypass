@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
+import Collapsible from "react-collapsible";
 
 const SendCredentials = (props) => {
 
   return (
     <div className="jira-creds">
-      {props.userExists ? 'byah': 
       <form action="/setcreds" method="POST">
         <label htmlFor="username">
           Username
@@ -20,8 +20,7 @@ const SendCredentials = (props) => {
         </label><br />
         <input type="hidden" name="jiraBypassID" value={props.jiraBypassID}/>
         <input type="submit" value="Submit" />
-        
-      </form>}
+      </form>
     </div>
   );
 };

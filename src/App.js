@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import SendCredentials from "./SendCredentials";
 import JiraList from "./JiraList";
+import Collapsible from "react-collapsible";
 
 function create_UUID(){
   var dt = new Date().getTime();
@@ -46,7 +47,11 @@ const App = () => {
   return (
     <div>
       <h1>Jira Bypass</h1>
-      <SendCredentials jiraBypassID={jiraBypassID} userExists={userExists}/>
+      {userExists ?  
+        <Collapsible trigger="RE-ENTER CREDENTIALS"> 
+          <SendCredentials jiraBypassID={jiraBypassID} userExists={userExists} />
+        </Collapsible>:
+        <SendCredentials jiraBypassID={jiraBypassID} userExists={userExists} />}
       {userExists ? <JiraList jiraBypassID={jiraBypassID} userExists={userExists} />: ""}
     </div>
   );
