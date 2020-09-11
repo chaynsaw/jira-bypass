@@ -46,8 +46,8 @@ const App = () => {
   return (
     <div>
       <h1>Jira Bypass</h1>
-      <SendCredentials jiraBypassID={jiraBypassID} />
-      <JiraList jiraBypassID={jiraBypassID} userExists={userExists}/>
+      <SendCredentials jiraBypassID={jiraBypassID} userExists={userExists}/>
+      {userExists ? <JiraList jiraBypassID={jiraBypassID} userExists={userExists} />: ""}
     </div>
   );
 };
