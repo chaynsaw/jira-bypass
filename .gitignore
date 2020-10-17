@@ -6,3 +6,8 @@ dist/
 coverage/
 .vscode/
 *.zip
+
+.idea/
+db.sqlite
+src/
+venv/
