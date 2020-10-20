@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+  color: #333;
+}
+
+.Collapsible {
+  border: 1px solid gray;
+  width: 300px;
+}

@@ -9,5 +9,5 @@ coverage/
 
 .idea/
 db.sqlite
-src/
 venv/
+src/testFetch.js
