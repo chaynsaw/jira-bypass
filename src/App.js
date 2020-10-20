@@ -40,11 +40,10 @@ const App = () => {
     fetch('/checkuser', options, (req, res) => {
       return res
     }).then(data => {
-      if (data.status === 404) {
+      if (data.status === 200) {
         setuserExists(true)
-        // return
       } else {
-        setuserExists(true)
+        setuserExists(false)
       }
     })
   }, [])
@@ -71,15 +70,11 @@ const App = () => {
         activeSprints={activeSprints} 
         onClickHandler={setCurrentActiveSprint}/>
       <br />
-      {userExists ?  
-        <Collapsible trigger="RE-ENTER CREDENTIALS (click here)">
+        <Collapsible open={!userExists} trigger="Credentials! Click Here.">
           <SendCredentials 
             jiraBypassID={jiraBypassID} 
             userExists={userExists} />
-        </Collapsible>:
-          <SendCredentials 
-            jiraBypassID={jiraBypassID} 
-            userExists={userExists} />}
+        </Collapsible>
       {userExists ? <JiraList 
         jiraBypassID={jiraBypassID}
         currentActiveSprint={currentActiveSprint} 

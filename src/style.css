@@ -5,5 +5,11 @@
 
 .Collapsible {
   border: 1px solid gray;
-  width: 300px;
+  width: 15%
+}
+
+.jira-creds {
+  border: 15px solid gray;
+  padding: 10px;
+  width: 100%;
 }

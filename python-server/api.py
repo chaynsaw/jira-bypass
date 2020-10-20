@@ -96,6 +96,10 @@ def get_auth_token():
 def get_resource():
     return jsonify({'data': 'Hello, %s!' % g.user.username})
 
+@auth.error_handler
+def unauthorized():
+    # make an authenticate page and redirect to there
+    return jsonify({'error': 'Unauthorized access'})
 
 @app.route('/')
 def index():
